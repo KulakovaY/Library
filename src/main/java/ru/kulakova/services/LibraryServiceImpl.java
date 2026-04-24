@@ -17,7 +17,7 @@ public class LibraryServiceImpl implements LibraryService {
 
 
     @Override
-    public UUID addBook(String title, String author, int year) {
+    public UUID addBook(String title, String author, int year) throws InvalidDataException, DuplicatedDataException {
         if (title == null || title.isBlank()) {
             throw new InvalidDataException("Необходимо ввести название книги");
         }
@@ -39,7 +39,7 @@ public class LibraryServiceImpl implements LibraryService {
     }
 
     @Override
-    public Book removeBook(UUID id) {
+    public Book removeBook(UUID id) throws NotFoundException {
         if (id == null) {
             throw new InvalidDataException("ID не может быть пустым");
         }
