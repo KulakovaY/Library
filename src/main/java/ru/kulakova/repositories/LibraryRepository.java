@@ -30,13 +30,13 @@ public class LibraryRepository {
     public boolean add(Book book) {
         if (book == null) return false;
 
-        String key = _buildKey(book.get_title(), book.get_author());
+        String key = _buildKey(book.getTitle(), book.getAuthor());
         if (_uniqueIndex.containsKey(key)) {
             return false;
         }
 
         _catalogue.add(book);
-        _indexById.put(book.get_id(), book);
+        _indexById.put(book.getId(), book);
         _uniqueIndex.put(key, book);
         return true;
     }
@@ -46,7 +46,7 @@ public class LibraryRepository {
         if (book == null) return Optional.empty();
 
         _catalogue.remove(book);
-        _uniqueIndex.remove(_buildKey(book.get_title(), book.get_author()));
+        _uniqueIndex.remove(_buildKey(book.getTitle(), book.getAuthor()));
         return Optional.of(book);
     }
 
@@ -63,8 +63,8 @@ public class LibraryRepository {
 
         return _catalogue.stream()
                 .filter(book -> {
-                    String title = book.get_title().toLowerCase();
-                    String author = book.get_author().toLowerCase();
+                    String title = book.getTitle().toLowerCase();
+                    String author = book.getAuthor().toLowerCase();
 
                     return Arrays.stream(keywords)
                             .anyMatch(word -> title.contains(word) || author.contains(word));
@@ -81,16 +81,16 @@ public class LibraryRepository {
     }
 
     public Optional<Book> findOldest() {
-        return _catalogue.stream().min(Comparator.comparingInt(Book::get_year));
+        return _catalogue.stream().min(Comparator.comparingInt(Book::getYear));
     }
 
     public Optional<Book> findNewest() {
-        return _catalogue.stream().max(Comparator.comparingInt(Book::get_year));
+        return _catalogue.stream().max(Comparator.comparingInt(Book::getYear));
     }
 
     public Map<String, Long> getTopAuthors(int limit) {
         return _catalogue.stream()
-                .collect(Collectors.groupingBy(Book::get_author, Collectors.counting()))
+                .collect(Collectors.groupingBy(Book::getAuthor, Collectors.counting()))
                 .entrySet().stream()
                 .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
                 .limit(limit)
