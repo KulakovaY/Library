@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface LibraryService {
-    UUID addBook(String title, String author, int year)
+    UUID addBook(String title, String author, Integer year)
             throws InvalidDataException, DuplicatedDataException;
 
     Book removeBook(UUID id) throws NotFoundException;

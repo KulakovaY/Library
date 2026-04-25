@@ -3,7 +3,7 @@ package ru.kulakova.controllers;
 import java.util.UUID;
 
 public interface LibraryController {
-    void handleAdd(String title, String author, int year);
+    void handleAdd(String title, String author, Integer year);
 
     void handleRemove(UUID id);
 

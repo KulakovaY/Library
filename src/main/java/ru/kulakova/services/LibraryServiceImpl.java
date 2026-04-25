@@ -17,15 +17,18 @@ public class LibraryServiceImpl implements LibraryService {
 
 
     @Override
-    public UUID addBook(String title, String author, int year) throws InvalidDataException, DuplicatedDataException {
+    public UUID addBook(String title, String author, Integer year) throws InvalidDataException, DuplicatedDataException {
         if (title == null || title.isBlank()) {
             throw new InvalidDataException("Необходимо ввести название книги");
         }
         if (author == null || author.isBlank()) {
             throw new InvalidDataException("Необходимо ввести автора книги");
         }
-        if (year < 0) {
-            throw new InvalidDataException("Некорректный год издания");
+        if (year == null ) {
+            throw new InvalidDataException("Необходимо ввести год издания");
+        }
+        if (year < 0){
+            throw new InvalidDataException("Некорректный год издания. Год должен быть больше 0");
         }
 
         Book book = new Book(title, author, year);

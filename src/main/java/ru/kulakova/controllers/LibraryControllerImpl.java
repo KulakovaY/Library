@@ -23,7 +23,7 @@ public class LibraryControllerImpl implements LibraryController {
 
 
     @Override
-    public void handleAdd(String title, String author, int year) {
+    public void handleAdd(String title, String author, Integer year) {
         try {
             UUID id = _service.addBook(title, author, year);
             _writer.writeUUID(id);
