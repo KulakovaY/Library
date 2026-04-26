@@ -11,7 +11,7 @@ public class ListHandler extends BaseHandler implements NestedHandleable {
 
     private static final String COMMAND_NAME = "LIST";
 
-    private Handleable _children;
+    private Handleable _childHandlers;
 
     public ListHandler(LibraryController controller) {
         super(controller);
@@ -20,7 +20,7 @@ public class ListHandler extends BaseHandler implements NestedHandleable {
     @Override
     public Commanding handle(String command, String args) {
         if (!command.equals(COMMAND_NAME)) {
-            return _nextHandler.handle(command, args);
+            return _nextHandler != null ? _nextHandler.handle(command, args) : null;
         }
 
         if (args == null || args.isBlank()) {
@@ -32,19 +32,19 @@ public class ListHandler extends BaseHandler implements NestedHandleable {
 
     @Override
     public NestedHandleable addChild(Handleable child) {
-        if (_children == null) {
-            _children = child;
+        if (_childHandlers == null) {
+            _childHandlers = child;
         } else {
-            _children.addNext(child);
+            _childHandlers.addNext(child);
         }
         return this;
     }
 
     @Override
     public Commanding handleNested(String command, String args) {
-        if (_children == null) {
+        if (_childHandlers == null) {
             return null;
         }
-        return _children.handle(command, args);
+        return _childHandlers.handle(command, args);
     }
 }

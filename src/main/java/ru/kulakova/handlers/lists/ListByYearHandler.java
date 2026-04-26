@@ -17,7 +17,7 @@ public class ListByYearHandler extends BaseHandler {
     @Override
     public Commanding handle(String command, String args) {
         if (!command.equals(COMMAND_NAME)) {
-            return _nextHandler.handle(command, args);
+            return _nextHandler != null ? _nextHandler.handle(command, args) : null;
         }
 
         if (args != null && !args.isBlank()) {

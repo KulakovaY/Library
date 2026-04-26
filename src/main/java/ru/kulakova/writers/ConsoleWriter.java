@@ -36,7 +36,7 @@ public class ConsoleWriter implements Writable{
 
     @Override
     public void writeBook(Book book) {
-        System.out.printf(" %s — %s (%d) [ID: %s]%n",
+        System.out.printf(" %s - %s (%d) [ID: %s]%n",
                 book.getTitle(),
                 book.getAuthor(),
                 book.getYear(),
@@ -50,12 +50,12 @@ public class ConsoleWriter implements Writable{
             Book b = books.get(i);
             System.out.printf("%d. %s — %s (%d)%n",
                     i + 1, b.getTitle(), b.getAuthor(), b.getYear());
+            System.out.printf("   [%s]%n", b.getId());
         }
     }
 
     @Override
     public void writeStats(LibraryStats stats) {
-        System.out.println("Статистика:");
         System.out.println("Всего книг: " + stats.totalCount());
 
         stats.oldest().ifPresent(b ->
@@ -65,7 +65,7 @@ public class ConsoleWriter implements Writable{
 
         System.out.println("\nТоп авторов:");
         if (stats.topAuthors().isEmpty()) {
-            writeNotification("  — Нет данных");
+            writeNotification("  - Нет данных");
         } else {
             int rank = 1;
             for (var entry : stats.topAuthors().entrySet()) {
