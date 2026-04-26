@@ -54,7 +54,7 @@ public class LibraryRepository {
         return Optional.ofNullable(_indexById.get(id));
     }
 
-    public List<Book> findByQuery(String query) { // can be edited
+    public List<Book> findByQuery(String query) {
         if (query == null || query.isBlank()) {
             return new ArrayList<>();
         }

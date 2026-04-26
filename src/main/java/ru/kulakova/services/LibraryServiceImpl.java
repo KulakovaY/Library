@@ -78,7 +78,7 @@ public class LibraryServiceImpl implements LibraryService {
     }
 
     @Override
-    public List<Book> findBooks(String query) { // can be edited
+    public List<Book> findBooks(String query) {
         return _libraryRepository.findByQuery(query);
     }
 
