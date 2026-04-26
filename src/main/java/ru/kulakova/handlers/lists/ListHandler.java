@@ -27,7 +27,11 @@ public class ListHandler extends BaseHandler implements NestedHandleable {
             return new ListCommand(_controller);
         }
 
-        return handleNested(command, args);
+        String[] parts = args.trim().split("\\s+", 2);
+        String keyword = parts[0];
+        String tail = parts.length > 1 ? parts[1] : "";
+
+        return handleNested(keyword, tail);
     }
 
     @Override
