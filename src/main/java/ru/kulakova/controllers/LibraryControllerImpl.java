@@ -58,7 +58,7 @@ public class LibraryControllerImpl implements LibraryController {
             }
             _writer.writeBookList(books);
         } catch (Exception e) {
-            _writer.writeError("Ошибка при выводе списка: " + e.getMessage());
+            _writer.writeError("Произошла ошибка при выводе списка: " + e.getMessage());
         }
     }
 
@@ -72,7 +72,7 @@ public class LibraryControllerImpl implements LibraryController {
             }
             _writer.writeBookList(books);
         } catch (Exception e) {
-            _writer.writeError("Ошибка при выводе списка: " + e.getMessage());
+            _writer.writeError("Произошла ошибка при выводе списка: " + e.getMessage());
         }
     }
 
@@ -86,7 +86,7 @@ public class LibraryControllerImpl implements LibraryController {
             }
             _writer.writeBookList(books);
         } catch (Exception e) {
-            _writer.writeError("Ошибка при выводе списка: " + e.getMessage());
+            _writer.writeError("Произошла ошибка при выводе списка: " + e.getMessage());
         }
     }
 
@@ -100,7 +100,7 @@ public class LibraryControllerImpl implements LibraryController {
             }
             _writer.writeBookList(books);
         } catch (Exception e) {
-            _writer.writeError("Ошибка при выводе списка: " + e.getMessage());
+            _writer.writeError("Произошла ошибка при выводе списка: " + e.getMessage());
         }
     }
 
@@ -114,7 +114,7 @@ public class LibraryControllerImpl implements LibraryController {
             }
             _writer.writeBookList(books);
         } catch (Exception e) {
-            _writer.writeError("Ошибка при поиске: " + e.getMessage());
+            _writer.writeError("Произошла ошибка при поиске: " + e.getMessage());
         }
     }
 
@@ -124,7 +124,7 @@ public class LibraryControllerImpl implements LibraryController {
             LibraryStats stats = _service.getStats();
             _writer.writeStats(stats);
         } catch (Exception e) {
-            _writer.writeError("Ошибка при получении статистики");
+            _writer.writeError("Произошла ошибка при получении статистики:" + e.getMessage());
         }
     }
 }

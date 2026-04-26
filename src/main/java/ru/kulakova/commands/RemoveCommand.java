@@ -7,25 +7,15 @@ import java.util.UUID;
 public class RemoveCommand implements Commanding{
 
     private final LibraryController _controller;
-    private final String _id;
+    private final UUID _id;
 
-    public RemoveCommand(LibraryController controller, String id) {
+    public RemoveCommand(LibraryController controller, UUID id) {
         _controller = controller;
         _id = id;
     }
 
     @Override
     public void execute() {
-        UUID id = null;
-
-        if (_id != null && !_id.isBlank()) {
-            try {
-                id = UUID.fromString(_id.trim());
-            } catch (IllegalArgumentException e) {
-                id = null;
-            }
-        }
-
-        _controller.handleRemove(id);
+        _controller.handleRemove(_id);
     }
 }
