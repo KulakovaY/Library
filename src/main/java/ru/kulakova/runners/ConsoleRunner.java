@@ -27,7 +27,7 @@ public class ConsoleRunner implements Runnable{
             String input = _scanner.nextLine().trim();
 
             if (input.isEmpty()) continue;
-            if (input.equalsIgnoreCase(EXIT_COMMAND)) {
+            if (input.equals(EXIT_COMMAND)) {
                 System.out.println("Программа завершена!");
                 break;
             }

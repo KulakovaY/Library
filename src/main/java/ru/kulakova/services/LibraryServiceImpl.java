@@ -28,7 +28,7 @@ public class LibraryServiceImpl implements LibraryService {
             throw new InvalidDataException("Необходимо ввести год издания");
         }
         if (year < 0){
-            throw new InvalidDataException("Некорректный год издания. Год должен быть больше 0");
+            throw new InvalidDataException("Некорректный год издания. Год должен быть не меньше 0");
         }
 
         Book book = new Book(title, author, year);
@@ -44,7 +44,7 @@ public class LibraryServiceImpl implements LibraryService {
     @Override
     public Book removeBook(UUID id) throws NotFoundException {
         if (id == null) {
-            throw new InvalidDataException("ID не может быть пустым");
+            throw new InvalidDataException("Необходимо ввести ID");
         }
 
         return _libraryRepository.removeById(id)
