@@ -59,4 +59,4 @@ mvn test
 - **Maven** (сборка, зависимости, запуск)
 - **JUnit 5 + Mockito** (тестирование)
 - **Lombok** (сокращение boilerplate-кода)
-- Паттерны: `Chain of Responsibility`, `Command`, `Strategy` (сортировки), `Repository`, `Singleton`
+- Паттерны: `Chain of Responsibility`, `Command`, `Repository`, `Singleton`
